@@ -188,6 +188,9 @@ Change to: `config.vm.synced_folder "www/", "/var/www/html"`
 
 ## 7. Install MySQL
 
+#### 1a. Use Windows Comman Prompt
+Open Windows Command Promt to install MySSQL. Cmder terminal act weird when setting the password.
+
 #### 1. SSH into VM
 `> vagrant ssh`
 
@@ -252,3 +255,19 @@ MySQL Password: `root`
 `> curl -Ss https://getcomposer.org/installer | php`
 
 `> sudo mv composer.phar /usr/bin/composer`
+
+---
+
+## NodeJS
+
+`> vagrant ssh`
+
+`> sudo apt-get update`
+
+`> sudo apt-get install npm`
+
+`> sudo npm cache clean -f`
+
+`> sudo npm install -g n`
+
+`> sudo n stable`

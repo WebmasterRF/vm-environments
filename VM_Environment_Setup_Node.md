@@ -59,13 +59,14 @@ Use Windows File Explore to create a new project folder. Then 'right-click' fold
 #### 2. Install NodeJS
 `> sudo apt-get update && sudo apt-get upgrade`
 
-`> cd ~`
+Install NVM - https://github.com/creationix/nvm
+`> curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash`
 
-`> curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -`
+`> exit`
 
-`> sudo apt-get install -y nodejs`
+`> vagrant ssh`
 
-`> sudo apt-get install build-essential`
+`> nvm install node`
 
 ---
 
@@ -83,6 +84,8 @@ Use Windows File Explore to create a new project folder. Then 'right-click' fold
 
 `> sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant`
 
+sudo env PATH=$PATH:/home/vagrant/.nvm/versions/node/v11.13.0/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
+
 `> systemctl status pm2-vagrant`
 
 ---
@@ -90,3 +93,11 @@ Use Windows File Explore to create a new project folder. Then 'right-click' fold
 ## 4. Set Up Nginx as a Reverse Proxy Server
 
 `> sudo nano /etc/nginx/sites-available/default`
+
+---
+
+## 5. PostgresQL
+
+https://leithsuheimat.wordpress.com/2017/12/18/installing-postgresql-10-on-ubuntu-16-04-on-virtualbox/
+
+`> sudo apt-get update && sudo apt-get upgrade`

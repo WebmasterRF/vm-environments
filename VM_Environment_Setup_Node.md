@@ -99,5 +99,20 @@ sudo env PATH=$PATH:/home/vagrant/.nvm/versions/node/v11.13.0/bin /usr/local/lib
 ## 5. PostgresQL
 
 https://leithsuheimat.wordpress.com/2017/12/18/installing-postgresql-10-on-ubuntu-16-04-on-virtualbox/
+https://tecadmin.net/install-postgresql-server-on-ubuntu/
 
 `> sudo apt-get update && sudo apt-get upgrade`
+
+`> sudo add-apt-repository 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main'`
+
+`> wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
+
+`> sudo apt-get update`
+
+`> sudo apt-get install postgresql postgresql-contrib`
+
+Change password:
+
+`> sudo -u postgres psql`
+
+`> \password postgres`

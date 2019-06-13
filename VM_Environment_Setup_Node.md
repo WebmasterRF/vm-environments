@@ -37,20 +37,6 @@ Use Windows File Explore to create a new project folder. Then 'right-click' fold
 
 ---
 
-## 2. Install Nginx
-
-#### 1. SSH into VM
-`> vagrant ssh`
-
-#### 2. Install Nginx
-`> sudo apt-get update && sudo apt-get upgrade`
-
-`> sudo apt-get -y install nginx`
-
-`> sudo service nginx start`
-
----
-
 ## 3. Install NodeJS
 
 #### 1. SSH into VM
@@ -116,3 +102,9 @@ Change password:
 `> sudo -u postgres psql`
 
 `> \password postgres`
+
+---
+
+## 6. PGAdmin
+
+https://askubuntu.com/questions/831262/how-to-install-pgadmin-4-in-desktop-mode-on-ubuntu

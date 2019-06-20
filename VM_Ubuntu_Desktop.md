@@ -118,3 +118,45 @@ Change password:
 `> sudo -u postgres psql`
 
 `> \password postgres`
+
+---
+
+## 6. MongoDB
+
+Download mongodb: https://www.mongodb.com/download-center/community
+
+Version: latest version
+OS: Ubuntu 18.04 Linux 64-bit x64
+Package: server
+
+Extract -> Home folder
+
+Create DB folder: Home/mongodb-data
+
+Initialize/Start DB
+`rft@rft:~$ /home/rft/mongodb/bin/mongod --dbpath=/home/rft/mongodb-data`
+
+
+db.createUser({
+    user: "admin",
+    pwd: "password",
+    roles: [ { role: "dbOwner", db: "rftracking" } ]
+})
+
+MongoDB Tuts: https://studio3t.com/knowledge-base/categories/mongodb-tutorials/
+
+## Robo 3T
+
+Download Robo 3T: https://robomongo.org/download
+
+Click download -> choose OS
+
+Extract -> Home folder
+
+Rename file to robo3t
+
+Open Robo 3T: Home/robo3t/bin/robo3t
+
+Create new connection
+
+

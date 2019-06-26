@@ -29,7 +29,7 @@ Hard disk: Create a virtual hard disk now
 Hard disk file type: VDI
 Storage on physical hard disk: Fixed size: 30 GB
 
-#### 3. Instaall Ubuntu
+#### 3. Install Ubuntu
 
 ### 1
 Start new VB

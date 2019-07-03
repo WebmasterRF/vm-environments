@@ -16,40 +16,14 @@ References:
 
 ---
 
-## 1. Install Ubuntu
-
-#### 1. Create new project folder
-Use Windows File Explore to create a new project folder. Then 'right-click' folder, select 'GIT Bash Here'
-
-#### 2. Add Ubuntu/Xenial64 VagrantBox
-`> vagrant box add ubuntu/xenial64`
-
-#### 3. Initialize
-`> vagrant init ubuntu/xenial64`
-
-`> vagrant up`
-
-#### 4. Vagrant-VBGuest plugin
-
-`> vagrant halt`
-
-`> vagrant plugin install vagrant-vbguest`
-
-`> vagrant reload`
-
----
-
 ## 2. Install Apache
 
-#### 1. SSH into VM
-`> vagrant ssh`
-
-#### 2. Install Apache
+#### 1. Install Apache
 `> sudo apt-get update && sudo apt-get upgrade`
 
 `> sudo apt-get install apache2 -y`
 
-#### 3. Set servername
+#### 2. Set servername
 `> sudo nano /etc/apache2/apache2.conf`
 
 At the bottom of the apache2.conf file, type:
@@ -57,46 +31,16 @@ At the bottom of the apache2.conf file, type:
 ServerName localhost
 ```
 
-#### 4. Test setup
+#### 3. Test setup
 `> sudo service apache2 restart`
 
 `> sudo apache2ctl configtest`
 
 `> apache2 -v`
 
-#### 5. Exit VM
-`> exit`
-
 ---
 
-## 3. Map Domain to IP
-
-#### 1. Edit Vagrantfile
-Open Vagrantfile in project folder.
-
-Uncomment:
-```
-config.vm.network "private_network", ip: "192.168.33.10"
-```
-Note: The digit in IP address can be used to differentiate domains, per VM.
-
-`> vagrant reload`
-
-#### 2. Edit Hosts File
-Open Host file: C:\Windows\System32\drivers\etc\hosts.
-
-Add this code to bottom of file:
-```
-192.168.33.10  [project name].local
-```
-
-#### 3. Test in browser
-
-Goto address: http://[project name].local
-
----
-
-## 4. Install PHP 7.2
+## 3. Install PHP 7.3
 
 #### 1. SSH into VM
 `> vagrant ssh`
@@ -106,48 +50,42 @@ Goto address: http://[project name].local
 
 `> sudo apt-get update`
 
-`> sudo apt-get install php7.2`
+`> sudo apt-get install php7.3`
 
 #### 3. Test PHP
 `> php -v`
 
 #### 4. Install PHP extensions
-`> sudo apt install php7.2-bcmath php7.2-bz2 php7.2-cgi php7.2-cli php7.2-common php7.2-curl php7.2-dev php7.2-enchant php7.2-fpm php7.2-gd php7.2-imap php7.2-intl php7.2-json php7.2-ldap php7.2-mbstring php7.2-odbc php7.2-opcache php7.2-pgsql php7.2-pspell php7.2-readline php7.2-sqlite3 php7.2-tidy php7.2-xml php7.2-xmlrpc php7.2-zip`
+`> sudo apt install php7.3-bcmath php7.3-bz2 php7.3-cgi php7.3-cli php7.3-common php7.3-curl php7.3-dev php7.3-enchant php7.3-fpm php7.3-gd php7.3-imap php7.3-intl php7.3-json php7.3-ldap php7.3-mbstring php7.3-odbc php7.3-opcache php7.3-pgsql php7.3-pspell php7.3-readline php7.3-sqlite3 php7.3-tidy php7.3-xml php7.3-xmlrpc php7.3-zip`
 
 If you get this message, run the listed commands with sudo:
 ```
-NOTICE: Not enabling PHP 7.2 FPM by default.
-NOTICE: To enable PHP 7.2 FPM in Apache2 do:
+NOTICE: Not enabling PHP 7.3 FPM by default.
+NOTICE: To enable PHP 7.3 FPM in Apache2 do:
 NOTICE: a2enmod proxy_fcgi setenvif
-NOTICE: a2enconf php7.2-fpm
+NOTICE: a2enconf php7.3-fpm
 NOTICE: You are seeing this message because you have apache2 package installed.
 ```
 
 `> sudo service apache2 restart`
 
 #### 5. SOAP (only if required)
-`> sudo apt-get install php7.2-soap`
+`> sudo apt-get install php7.3-soap`
 
-`> sudo service php7.2-fpm reload`
+`> sudo service php7.3-fpm reload`
 
 `> sudo service apache2 restart`
-
-#### 6. Exit VM
-`> exit`
 
 ---
 
 ## 5. Setup ModRewrite
 
-#### 1. SSH into VM
-`> vagrant ssh`
-
-#### 2. Enabling mod_rewrite
+#### 1. Enabling mod_rewrite
 `> sudo a2enmod rewrite`
 
 `> sudo service apache2 restart`
 
-#### 3. Setup .htaccess
+#### 2. Setup .htaccess
 `> sudo nano /etc/apache2/sites-available/000-default.conf`
 
 Add this code to '000-default.conf' file, right after line: `<VirtualHost *:80>`
@@ -161,7 +99,7 @@ Add this code to '000-default.conf' file, right after line: `<VirtualHost *:80>`
 
 `> sudo service apache2 restart`
 
-`> sudo chmod  o+w /var/www/html`
+`> sudo chmod o+w /var/www/html`
 
 `> sudo nano /var/www/html/.htaccess`
 
@@ -170,34 +108,18 @@ Add this code to .htaccess file:
 RewriteEngine on
 ```
 
-`> exit`
-
 ---
 
-## 6. Link project folder
-
-#### 1. Opend Vagrantfile
-
-Create 'www' folder, in projct folder
-
-Uncomment: `config.vm.synced_folder "LOCAL", "VIRTUAL"`
-
-Change to: `config.vm.synced_folder "www/", "/var/www/html"`
-
-`> vagrant reload`
-
----
-
-## 7. Install MySQL
+## 6. Install MySQL
 
 #### 1a. Use Windows Comman Prompt
-Open Windows Command Promt to install MySSQL. Cmder terminal act weird when setting the password.
+Open Windows Command Promt to install MySQL. Cmder terminal act weird when setting the password.
 
 #### 1. SSH into VM
 `> vagrant ssh`
 
 #### 2. Install MySQL
-`sudo apt-get install mysql-server php7.2-mysql`
+`sudo apt-get install mysql-server php7.3-mysql`
 
 When asked to set password: `root`
 
@@ -220,7 +142,7 @@ Comment out:
 
 ---
 
-## 8. Setup MySQL Workbench
+## 7. Setup MySQL Workbench
 
 #### 1. Create new connection
 Hit the + icon to add a new connection
@@ -252,24 +174,49 @@ MySQL Password: `root`
 
 ## Composer
 
-`> vagrant ssh`
-
 `> curl -Ss https://getcomposer.org/installer | php`
 
 `> sudo mv composer.phar /usr/bin/composer`
 
 ---
 
-## NodeJS
+## 8. Install NodeJS
 
-`> vagrant ssh`
+#### Install NodeJS
+`> sudo apt-get update && sudo apt-get upgrade`
+
+Install NVM - https://github.com/creationix/nvm
+`> curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash`
+
+close / reopen terminal
+
+`> nvm install node`
+
+---
+
+## 9. PostgresQL
+
+https://leithsuheimat.wordpress.com/2017/12/18/installing-postgresql-10-on-ubuntu-16-04-on-virtualbox/
+https://tecadmin.net/install-postgresql-server-on-ubuntu/
+
+`> sudo apt-get update && sudo apt-get upgrade`
+
+`> sudo add-apt-repository 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main'`
+
+`> wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
 
 `> sudo apt-get update`
 
-`> sudo apt-get install npm`
+`> sudo apt-get install postgresql postgresql-contrib`
 
-`> sudo npm cache clean -f`
+Change password:
 
-`> sudo npm install -g n`
+`> sudo -u postgres psql`
 
-`> sudo n stable`
+`> \password postgres`
+
+---
+
+## 6. PGAdmin
+
+https://askubuntu.com/questions/831262/how-to-install-pgadmin-4-in-desktop-mode-on-ubuntu

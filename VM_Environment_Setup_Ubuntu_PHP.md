@@ -220,3 +220,7 @@ Change password:
 ## 6. PGAdmin
 
 https://askubuntu.com/questions/831262/how-to-install-pgadmin-4-in-desktop-mode-on-ubuntu
+
+To Run:
+
+`> ~/pgadmin4/pgadmin4`
